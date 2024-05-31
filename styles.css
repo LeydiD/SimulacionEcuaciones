@@ -1,0 +1,297 @@
+/* styles.css */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Rubik+Doodle+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@0,87.6&family=Neucha&family=Rubik+Doodle+Shadow&display=swap');
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20240224/pngtree-creative-wave-style-sea-water-image_15627397.jpg);
+    /* https://i.pinimg.com/originals/3c/c5/61/3cc5615cd72d5faf4ce3e9fe605bf240.gif */
+    background-size: 100%;
+}
+
+header {
+    background-color: #ffffff;
+    color: #7b2eff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+}
+
+#header {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+#logo {
+    max-width: 90px;
+    height: auto;
+    margin-right: 20px;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+#divisiones {
+    display: flex;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 70%;
+    height: 100%;
+    /* max-width: 800px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    justify-content: space-around;
+
+    flex-wrap: wrap;
+    margin-top: 8%;
+    margin-left: 15%;
+}
+
+#divisiones h1 {
+    color: #8400ff;
+    width: 100%;
+    /* font-family: "Honk", system-ui;
+    font-weight: 400;
+  font-style: normal; */
+    font-family: "Rubik Doodle Shadow", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(25, 21, 255);
+    font-size: 40px;
+}
+
+#divisiones p {
+    font-family: "Neucha", cursive;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#divisiones:hover {
+    background-color: #acd4ffd2;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Aquí se define la sombra */
+    box-sizing: border-box;
+    color: #000000;
+}
+
+#bienvenidos:hover,
+#nombres:hover {
+    opacity: 0.8;
+}
+
+#bienvenidos,
+#nombres {
+    flex: 1;
+    /* Añadido para que ambos divs tomen el mismo espacio */
+    min-width: 300px;
+    /* Añadido para un mínimo ancho adecuado */
+    margin: 10px;
+    /* Añadido para espaciado */
+}
+
+.welcome-container,
+#nombres {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: calc(100vh - 60px); */
+    text-align: center;
+    padding: 10px;
+}
+
+.welcome-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #8a14ea;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para la página de simulación */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
+
+.container {
+    margin-top:5% ;
+    vertical-align: middle;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    border: none;
+    width: 60%;
+}
+
+.left-panel,
+.center-panel {
+    padding: 10px;
+}
+
+.left-panel {
+    width: 50%;
+    display: flex;
+    border: none;
+    flex-direction: column;
+}
+.left-panel h1{
+    font-family: "Rubik Doodle Shadow", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(25, 21, 255);
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.center-panel {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border: none;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: calc(80% - 10px);
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+} */
+
+#resultArea {
+    font-size: 15px;
+    width: 97%;
+    background-color: #8dc4ffc5;
+}
+
+pre {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: auto;
+    max-height: 400px;
+    white-space: pre-wrap;
+}
+
+#img1,
+#img2 {
+    width: 100%;
+    height: 80%;
+    border-radius: 5px;
+
+}
+
+.center-panel {
+    width: 50%;
+    /* Cambiar el ancho a 50% */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        margin-top: auto;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .left-panel {
+        width: 100%;
+        /* Cambiar el ancho a 50% */
+        border: none;
+    }
+
+    .center-panel {
+        width: 100%;
+        /* Cambiar el ancho a 100% */
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+@media (max-width: 768px) {
+    #divisiones {
+        width: 90%;
+        margin-top: 5%;
+        /* Ajuste de margen superior */
+    }
+
+    #logo {
+        max-width: 30px;
+    }
+
+    #header {
+        font-size: 1.5em;
+    }
+
+    #bienvenidos,
+    #nombres {
+        min-width: auto;
+        /* Eliminar el ancho mínimo */
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación del drenado de un tanque</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="left-panel">
+                <h1>Simulación del drenado de un tanque</h1>
+                <div class="input-group">
+                    <label for="radioOrificio">Radio del Orificio (m):</label>
+                    <input type="number" id="radioOrificio" step="0.01" value="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="radioRecipiente">Radio del Recipiente (m):</label>
+                    <input type="number" id="radioRecipiente" step="0.01" value="0.5">
+                </div>
+                <div class="input-group">
+                    <label for="alturaInicial">Altura Inicial del Agua (m):</label>
+                    <input type="number" id="alturaInicial" step="0.01" value="0.5">
+                </div>
+                <div class="input-group">
+                    <label for="tiempoTotal">Tiempo Total (s):</label>
+                    <input type="number" id="tiempoTotal" step="1" value="120">
+                </div>
+                <button id="startButton">Iniciar Simulación</button>
+                <script>
+                    document.getElementById('startButton').addEventListener('click', function () {
+                        window.location.href = 'resultados.html';
+                    });
+                </script>
+            </div>
+
+            <div class="center-panel">
+                <img src="image2.jpg" alt="Imagen 2" id="img1">
+                <img src="image1.png" alt="Imagen 1" id="img2">
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        document.getElementById('startButton').addEventListener('click', function () {
+    const radioOrificio = parseFloat(document.getElementById('radioOrificio').value);
+    const radioRecipiente = parseFloat(document.getElementById('radioRecipiente').value);
+    const alturaInicial = parseFloat(document.getElementById('alturaInicial').value);
+    const tiempoTotal = parseFloat(document.getElementById('tiempoTotal').value);
+
+    // Crear la cadena de consulta con los parámetros de la simulación
+    const queryString = `?radioOrificio=${radioOrificio}&radioRecipiente=${radioRecipiente}&alturaInicial=${alturaInicial}&tiempoTotal=${tiempoTotal}`;
+
+    // Redirigir a la página de resultados con la cadena de consulta como parte de la URL
+    window.location.href = `resultados.html${queryString}`;
+});
+
+    </script>
+</body>
+
+</html>
