@@ -1,6 +1,4 @@
-/* styles.css */
 
-/* @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Honk&family=Rubik+Doodle+Shadow&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@0,87.6&family=Neucha&family=Rubik+Doodle+Shadow&display=swap');
 
@@ -15,7 +13,6 @@ body {
 
 body{
     background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20240224/pngtree-creative-wave-style-sea-water-image_15627397.jpg);
-    /* https://i.pinimg.com/originals/3c/c5/61/3cc5615cd72d5faf4ce3e9fe605bf240.gif */
     background-size: 100%;
 }
 
@@ -25,6 +22,7 @@ header {
     padding: 20px 40px;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 #header {
@@ -54,10 +52,11 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     justify-content: space-around;
+    margin: 5% auto;
 
     flex-wrap: wrap;
     margin-top: 8%;
-    margin-left: 15%;
+    margin-left: auto;
 }
 
 #divisiones h1 {
@@ -81,7 +80,7 @@ h1 {
 }
 
 #divisiones:hover {
-    background-color: #acd4ffd2;
+    background-color: #ffffffca;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Aquí se define la sombra */
     box-sizing: border-box;
@@ -293,5 +292,27 @@ pre {
     #nombres {
         min-width: auto;
         /* Eliminar el ancho mínimo */
+    }
+}
+@media (max-width: 768px) {
+    header {
+        padding: 20px; /* Ajustado el padding para dispositivos móviles */
+    }
+
+    #header {
+        font-size: 1.2em; /* Reducido el tamaño de fuente */
+    }
+
+    #logo {
+        max-width: 40px; /* Reducido el tamaño del logo */
+    }
+
+    #divisiones {
+        width: 90%; /* Ajustado el ancho */
+        margin-top: 10%; /* Ajustado el espacio superior */
+    }
+    #divisiones {
+        /* Resto de los estilos */
+        margin-top: 0; /* Eliminado el margen superior */
     }
 }
