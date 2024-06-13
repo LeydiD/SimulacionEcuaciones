@@ -6,19 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados de la Simulación</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Incluye la biblioteca Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <div class="wrapper">
         <div class="container">
-            <div class="right-panel">
+            <div class="left-panel">
                 <h2>Resultados de la Simulación</h2>
-                <!-- Aquí se mostrará la gráfica -->
                 <pre id="resultArea"></pre>
-                <canvas id="myChart" width="400" height="400"></canvas>
                 <button onclick="window.location.href='simulador.html'">Regresar</button>
+            </div>
+            <div class="center-panel">
+                <div id="tank">
+                    <div id="waterLevel"></div>
+                </div>
+                <div id="dataText">
+                    <p id="waterText">Altura del agua: <span id="waterHeightText">0 m</span></p>
+                    <p id="timeText">Tiempo: <span id="timeTextValue">0 s</span></p>
+                </div>
+                
+            </div>
+            
+            <div class="right-panel">
+                <canvas id="myChart" width="400" height="400"></canvas>
             </div>
         </div>
     </div>
