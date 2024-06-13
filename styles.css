@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Honk&family=Rubik+Doodle+Shadow&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@0,87.6&family=Neucha&family=Rubik+Doodle+Shadow&display=swap');
 
@@ -48,12 +47,10 @@ h1 {
     border-radius: 15px;
     width: 70%;
     height: 100%;
-    /* max-width: 800px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     justify-content: space-around;
     margin: 5% auto;
-
     flex-wrap: wrap;
     margin-top: 8%;
     margin-left: auto;
@@ -62,9 +59,6 @@ h1 {
 #divisiones h1 {
     color: #8400ff;
     width: 100%;
-    /* font-family: "Honk", system-ui;
-    font-weight: 400;
-  font-style: normal; */
     font-family: "Rubik Doodle Shadow", system-ui;
     font-weight: 400;
     font-style: normal;
@@ -95,11 +89,8 @@ h1 {
 #bienvenidos,
 #nombres {
     flex: 1;
-    /* Añadido para que ambos divs tomen el mismo espacio */
     min-width: 300px;
-    /* Añadido para un mínimo ancho adecuado */
     margin: 10px;
-    /* Añadido para espaciado */
 }
 
 .welcome-container,
@@ -108,7 +99,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* height: calc(100vh - 60px); */
     text-align: center;
     padding: 10px;
 }
@@ -137,7 +127,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60%;
+    height: 70%;
 }
 
 .container {
@@ -149,21 +139,42 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     border: none;
-    width: 60%;
+    width: 80%;
 }
+
+.container1 {
+    margin-top:5% ;
+    vertical-align: middle;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    border: none;
+    width: 50%;
+    
+}
+
 
 .left-panel,
-.center-panel {
+.center-panel,
+.right-panel, .left-panel1, .center-panel1{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.left-panel {
+
+.left-panel, .left-panel1 {
     width: 50%;
     display: flex;
     border: none;
     flex-direction: column;
 }
-.left-panel h1{
+
+
+.left-panel h1, .left-panel1 h1{
     font-family: "Rubik Doodle Shadow", system-ui;
     font-weight: 400;
     font-style: normal;
@@ -172,17 +183,14 @@ button:hover {
     margin-bottom: 25px;
 }
 
-.center-panel {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border: none;
+.left-panel1{
+    width: 40%;
 }
 
+.right-panel{
+    width: 30%;
+    vertical-align: middle;
+}
 h1,
 h2 {
     text-align: center;
@@ -203,19 +211,6 @@ input {
     box-sizing: border-box;
 }
 
-/* button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-} */
 
 #resultArea {
     font-size: 15px;
@@ -241,36 +236,45 @@ pre {
 }
 
 .center-panel {
-    width: 50%;
-    /* Cambiar el ancho a 50% */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 20%;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
 }
 
+.center-panel1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+
 /* Media query for responsiveness */
 @media (max-width: 768px) {
-    .container {
+    .container, .container1 {
         margin-top: auto;
         flex-direction: column;
         width: 90%;
     }
 
-    .left-panel {
+    .left-panel, .left-panel1 {
         width: 100%;
         /* Cambiar el ancho a 50% */
         border: none;
     }
 
-    .center-panel {
+    .center-panel, .center-panel1 {
         width: 100%;
         /* Cambiar el ancho a 100% */
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
     }
+    
 }
 
 @media (max-width: 768px) {
@@ -316,3 +320,55 @@ pre {
         margin-top: 0; /* Eliminado el margen superior */
     }
 }
+#tank {
+    position: relative; /* Aseguramos que la posición absoluta del agua sea relativa al tanque */
+    width: 80px; /* Ancho fijo del tanque */
+    height: 200px; /* Altura fija del tanque */
+    border: 2px solid black; /* Borde del tanque */
+    overflow: hidden; /* Ocultar el contenido que excede el tamaño */
+}
+
+#waterLevel {
+    position: absolute; /* Posición absoluta dentro del tanque */
+    bottom: 0; /* Anclar el nivel del agua en la parte inferior del tanque */
+    width: 100%; /* Ancho del nivel del agua al 100% del tanque */
+    background-color: rgba(100, 100, 255, 0.8); /* Color del agua */
+    height: 0; /* Altura inicial del agua (vacío) */
+    transition: height 1s; /* Animación de la altura del agua */
+}
+
+#waterText, #timeText {
+    /* position: absolute; */
+    left: 5px;
+    bottom: 5px;
+    color: rgb(81, 80, 80);
+    font-size: 12px;
+}
+#timeText{
+    padding:6px;
+}
+#waterHeightText, #timeTextValue {
+    font-weight: bold;
+}
+
+
+
+.right-panel {
+    width: 30%;
+    justify-content: center; /* Centrar el contenido verticalmente */
+}
+
+canvas {
+    display: block;
+    margin: 0 auto; /* Centramos el canvas horizontalmente */
+}
+
+
+/* Ajustar estilos del texto */
+#waterText,
+#timeText {
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
