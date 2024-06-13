@@ -9,18 +9,12 @@ window.onload = function () {
     const tiempoTotal = parseFloat(params.get('tiempoTotal'));
 
     // Ejecutar la simulación con los valores obtenidos de la URL
-    const simulationResult = runSimulation(radioOrificio, radioRecipiente, alturaInicial, tiempoTotal);
-
-    // Mostrar los resultados en el área de texto
-    document.getElementById('resultArea').textContent = simulationResult;
-
-    // Crear la gráfica
-    createChart(simulationResult);
+    runSimulation(radioOrificio, radioRecipiente, alturaInicial, tiempoTotal);
 };
 
 function runSimulation(radioOrificio, radioRecipiente, alturaInicial, tiempoTotal) {
     const G = 9.81; // Aceleración debido a la gravedad en m/s^2
-    const DELTA_T = 0.01; // Paso de tiempo en segundos
+    const DELTA_T = 1; // Paso de tiempo en segundos
     let alturaAgua = alturaInicial;
     let tiempo = 0;
     let result = '';
@@ -39,71 +33,86 @@ function runSimulation(radioOrificio, radioRecipiente, alturaInicial, tiempoTota
     result += `Área del Recipiente: ${areaRecipiente} m²\n\n`;
 
     // Primer paso para mostrar la fórmula reemplazada
-    const dAlturaInicial = -(areaOrificio / areaRecipiente) * Math.sqrt(2 * G * alturaAgua) ;
+    const dAlturaInicial = -(areaOrificio / areaRecipiente) * Math.sqrt(2 * G * alturaAgua);
     result += `Con los valores iniciales:\n`;
     result += `d(h)/dt = -(${areaOrificio} / ${areaRecipiente}) * sqrt(2 * ${G} * ${alturaInicial})\n`;
     result += `d(h)/dt ≈ ${dAlturaInicial.toFixed(4)} m/s\n\n`;
 
     result += `Simulación:\n`;
 
-    while (tiempo < tiempoTotal && alturaAgua > 0) {
-        const dAltura = -(areaOrificio / areaRecipiente) * Math.sqrt(2 * G * alturaAgua) * DELTA_T;
-        alturaAgua += dAltura;
-        tiempo += DELTA_T;
-        result += `Tiempo: ${tiempo.toFixed(2)} s, Altura del agua: ${alturaAgua.toFixed(4)} m\n`;
-    }
-
-    result += '\nLa simulación ha terminado.';
-    return result;
-}
-
-function createChart(simulationResult) {
-    // Extraer los datos de la simulación para la gráfica
     const tiempoData = [];
     const alturaData = [];
 
-    // Analizar el texto de los resultados para extraer los datos de tiempo y altura
-    const lines = simulationResult.split('\n');
-    lines.forEach(line => {
-        if (line.startsWith('Tiempo:')) {
-            const tiempo = parseFloat(line.split(':')[1].split(' ')[1]);
-            const altura = parseFloat(line.split(':')[2].split(' ')[1]);
-            tiempoData.push(tiempo);
-            alturaData.push(altura);
-        }
-    });
+    createChart();
 
-    // Dibujar la gráfica utilizando Chart.js
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: tiempoData,
-            datasets: [{
-                label: 'Altura del Agua',
-                data: alturaData,
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    type: 'linear',
-                    position: 'bottom',
-                    title: {
-                        display: true,
-                        text: 'Tiempo (s)'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Altura del Agua (m)'
+    const updateInterval = setInterval(() => {
+        if (tiempo >= tiempoTotal || alturaAgua <= 0) {
+            clearInterval(updateInterval);
+            result += '\nLa simulación ha terminado.';
+            document.getElementById('resultArea').textContent = result;
+        } else {
+            const dAltura = -(areaOrificio / areaRecipiente) * Math.sqrt(2 * G * alturaAgua) * DELTA_T;
+            alturaAgua += dAltura;
+            tiempo += DELTA_T;
+
+            tiempoData.push(tiempo);
+            alturaData.push(alturaAgua);
+
+            result += `Tiempo: ${tiempo.toFixed(2)} s, Altura del agua: ${alturaAgua.toFixed(4)} m\n`;
+            document.getElementById('resultArea').textContent = result;
+
+            // Actualizar la gráfica con los nuevos datos
+            updateChart(tiempoData, alturaData);
+            updateTank(alturaAgua, alturaInicial);
+
+            // Actualizar los textos de altura y tiempo
+            document.getElementById('waterHeightText').textContent = `${alturaAgua.toFixed(4)} m`;
+            document.getElementById('timeTextValue').textContent = `${tiempo.toFixed(2)} s`;
+        }
+    }, 2000);
+
+    function createChart() {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        window.myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Altura del Agua',
+                    data: [],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tiempo (s)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Altura (m)'
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    }
+
+    function updateChart(tiempoData, alturaData) {
+        window.myChart.data.labels = tiempoData;
+        window.myChart.data.datasets[0].data = alturaData;
+        window.myChart.update();
+    }
+
+    function updateTank(alturaAgua, alturaInicial) {
+        const tank = document.getElementById('waterLevel');
+        const alturaPorcentaje = (alturaAgua / alturaInicial) * 100;
+        tank.style.height = `${Math.max(0, alturaPorcentaje)}%`;
+    }
 }
